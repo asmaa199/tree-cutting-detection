@@ -6,18 +6,13 @@
 
 require 'config.php';
 
-$sql = "SELECT * FROM tbl_gps WHERE 1";
+$sql = "SELECT * FROM device_gps WHERE 1";
 $result = $db->query($sql);
 if (!$result) {
   { echo "Error: " . $sql . "<br>" . $db->error; }
 }
 
 $rows = $result -> fetch_all(MYSQLI_ASSOC);
-
-//print_r($row);
-
-//header('Content-Type: application/json');
-//echo json_encode($rows);
 
 
 ?>
