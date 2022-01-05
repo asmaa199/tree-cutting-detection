@@ -1,5 +1,7 @@
 #include <TinyGPS++.h>
+
 #include <SoftwareSerial.h>
+
 #include <AltSoftSerial.h>
 
 #define rxPin 2
@@ -89,12 +91,12 @@ int sendGpsToServer()
       //if (latitude == 0) {return 0;}
       
       String url, temp;
-      url = "http://ENTER_YOUR_WEBSITE/gpsdata.php?lat=";
+      url = "http://localhost/Tree-cutting/web-server//gpsdata.php?lat=";
       url += latitude;
       url += "&lng=";
       url += longitude;
 
-      //url = "http://ahmadssd.000webhostapp.com/gpsdata.php?lat=222&lng=222";
+      
 
       Serial.println(url);    
       delay(300);
@@ -112,7 +114,7 @@ int sendGpsToServer()
     sendATcommand("AT+HTTPINIT", "OK", 2000); 
     sendATcommand("AT+HTTPPARA=\"CID\",1", "OK", 1000);
     //Set the HTTP URL sim800.print("AT+HTTPPARA="URL","http://ahmadssd.000webhostapp.com/gpsdata.php?lat=222&lng=222"\r");
-    sim800L.print("AT+HTTPPARA=\"URL\",\"");
+    sim800L.print("AT+HTTPPARA=\"URL\",\"http://localhost/Tree-cutting/web-server//gpsdata.php?lat=");
     sim800L.print(url);
     sendATcommand("\"", "OK", 1000);
     //Set up the HTTP action
